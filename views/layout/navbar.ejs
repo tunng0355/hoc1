@@ -1,0 +1,58 @@
+<div class="navbar d-flex w-100 position-fixed bg-white  justify-content-between">
+    <div class="container-lg">
+        <div class="d-flex align-items-center">
+            <span class="toggle-menu me-2 d-none" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </span>
+            <a href="/">
+                <span class="logo_brand">BeLuz</span>
+            </a>
+        </div>
+        <ul class="menu list-unstyled d-flex mb-0 p-0">
+            <li>
+                <a href="/" class="nav-link active">
+                    Trang chủ
+                </a>
+            </li>
+            <li>
+                <a href="/" class="nav-link">
+                    Sự kiện
+                </a>
+            </li>
+            <li>
+                <a href="/" class="nav-link">
+                    Hướng dẫn
+                </a>
+            </li>
+            <li>
+                <a href="/" class="nav-link">
+                    Nhận quà
+                </a>
+            </li>
+            <li>
+                <a href="/" class="nav-link">
+                    Lịch sử hoạt động
+                </a>
+            </li>
+            <li>
+                <a href="/" class="nav-link">
+                    Liên hệ hỗ trợ
+                </a>
+            </li>
+        </ul>
+        <div class="header_info">
+            <% if(!user){ %>
+                <a href="/signin" class="btn text-white btn-main bg-main fs-13px">
+                    Đăng nhập
+                </a>
+                <% }else{ %>
+                    <span type="button">
+                        <img src="/img/user.png" width="32" height="32" />
+                    </span>
+                    <% } %>
+        </div>
+    </div>
+</div>

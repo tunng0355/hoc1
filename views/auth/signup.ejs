@@ -1,0 +1,105 @@
+<%- include('../layout/head') %>
+    <%- include('../layout/navbar') %>
+        <style>
+            .fs-14px {
+                font-size: 14px;
+            }
+
+            .bg-dangers {
+                background-color: #ff3b3b !important;
+            }
+        </style>
+        <div class="content">
+            <div class="container-sm p-0 p-xl-5 pt-xl-0 justify-content-center d-flex">
+                <div class="row m-0 p-0 p-xl-5">
+                    <div class="col-auto col-sm mb-3 d-none p-0 p-sm-5 p-sm-5 d-xl-block">
+                        <img src="./img/img-experts.png" class="w-100" style="
+                    filter: hue-rotate(269deg);" />
+                        <p class="mt-2">Hi bạn</p>
+                        <p>Chào mừng bạn đến với TUNGMMO ! cộng đồng TUNGMMO chúng tôi chúc bạn 1 một ngày vui vẻ </p>
+                    </div>
+                    <div class="col-auto col-sm text-center p-0 p-sm-5 p-sm-5 pt-sm-0">
+                        <h5 class="mb-4 mt-4">Đăng ký</h5>
+                        <div class="card card-body w-100 p-4 text-start" style="    min-width: 23rem;">
+                            <form method="POST">
+                                <% if (errorMessage) { %>
+                                    <% if (status=='warning' ) { %>
+                                        <div class="alert alert-warning d-flex align-items-center fs-13px" role="alert">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-exclamation-triangle-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                            </svg>
+                                            <span class="ms-1">
+                                                <%= errorMessage %>
+                                            </span>
+                                        </div>
+                                        <% }%>
+                                            <% if(status=='error' ){ %>
+                                                <div class="alert alert-danger d-flex align-items-center fs-13px"
+                                                    role="alert">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-exclamation-triangle-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                                    </svg>
+                                                    <span class="ms-1">
+                                                        <%= errorMessage %>
+                                                    </span>
+                                                </div>
+                                                <% } %>
+                                                    <% } %>
+                                                        <div class="form-group mb-3">
+                                                            <label class="fs-14px mb-2" for="username">Tài
+                                                                Khoản</label>
+                                                            <input type="text" id="username" name="username"
+                                                                class="form-control fs-15px">
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label class="fs-14px mb-2" for="email">Email</label>
+                                                            <input type="email" id="email" name="email"
+                                                                class="form-control fs-15px">
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label class="fs-14px mb-2" for="password">Mật
+                                                                Khẩu</label>
+                                                            <input type="password" name="password" id="password"
+                                                                class="form-control">
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label class="fs-14px mb-2" for="confirmPassword">Nhập
+                                                                lại
+                                                                mật Khẩu</label>
+                                                            <input type="password" id="confirmPassword"
+                                                                name="confirmPassword" class="form-control">
+                                                        </div>
+                                                        <div class="mb-2 d-flex justify-content-between">
+                                                            <label class="form-check-label d-flex align-items-center"
+                                                                for="remember">
+                                                                <input class="checkbox_main fs-14px" id="remember"
+                                                                    type="checkbox" />
+                                                                <label class="form-check-label fs-14px ms-1"
+                                                                    for="remember">Xác nhận đăng ký</label>
+                                                            </label>
+                                                        </div>
+                                                        <button type="submit"
+                                                            class="btn btn-main fs-13px text-white w-100 text-center pt-3 pb-3 justify-content-center mt-3 bg-main">Đăng
+                                                            ký</button>
+                                                        <p class="text-center w-100 mt-3 mb-3">-Hoặc-</p>
+                                                        <div class="d-flex flex-row">
+                                                            <a href="/signin"
+                                                                class="btn btn-main bg-dangers fs-13px text-white w-100 text-center  pt-3 pb-3 justify-content-center">
+                                                                Đăng nhập
+                                                            </a>
+                                                            <!--tích hợp đăng ký mxh-->
+                                                        </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../layout/footer') %>
+            <%- include('../layout/script') %>

@@ -1,0 +1,142 @@
+<%- include('../layout/head') %>
+   <!-- For Client View -->
+   <link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.9.0/css/bootstrap.css" />
+   <link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.9.0/css/react-select.css" />
+   <meta http-equiv="origin-trial" content="">
+    <style>
+        body {
+            background-color: rgb(25 25 25) !important;
+        }
+
+        html,
+        body {
+            min-width: 0 !important;
+        }
+
+        #zmmtg-root {
+            display: none;
+        }
+
+        main {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+
+        main button {
+            margin-top: 20px;
+            background-color: #2D8CFF;
+            color: #ffffff;
+            text-decoration: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+            display: inline-block;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        main button:hover {
+            background-color: #2681F2;
+        }
+    </style>
+    <div>
+
+
+        <main>
+            <h1>Zoom Meeting SDK Sample JavaScript</h1>
+
+            <!-- For Component View -->
+            <div id="meetingSDKElement">
+                <!-- Zoom Meeting SDK Rendered Here -->
+            </div>
+
+            <button onClick="getSignature()">Join Meeting</button>
+        </main>
+
+        <script src="https://source.zoom.us/2.9.0/lib/vendor/react.min.js"></script>
+        <script src="https://source.zoom.us/2.9.0/lib/vendor/react-dom.min.js"></script>
+        <script src="https://source.zoom.us/2.9.0/lib/vendor/redux.min.js"></script>
+        <script src="https://source.zoom.us/2.9.0/lib/vendor/redux-thunk.min.js"></script>
+        <script src="https://source.zoom.us/2.9.0/lib/vendor/lodash.min.js"></script>
+    
+        <!-- For Client View -->
+        <script src="https://source.zoom.us/zoom-meeting-2.9.0.min.js"></script>
+        <script>
+            ZoomMtg.setZoomJSLib('https://source.zoom.us/2.9.0/lib', '/av')
+
+            ZoomMtg.preLoadWasm()
+            ZoomMtg.prepareWebSDK()
+            // loads language files, also passes any error messages to the ui
+            ZoomMtg.i18n.load('en-US')
+            ZoomMtg.i18n.reload('en-US')
+
+            // setup your signature endpoint here: https://github.com/zoom/meetingsdk-sample-signature-node.js
+            var signatureEndpoint = ''
+            var sdkKey = 'KF2LPQCZoKdd9PpEArX5Y6V316sgy31Ag6ci'
+            var meetingNumber = '123456789'
+            var role = 0
+            var leaveUrl = 'http://localhost:8080'
+            var userName = '5054133710'
+            var userEmail = 'nhomcodedao@gmail.com'
+            var passWord = 'Kimthuy95@@'
+            // pass in the registrant's token if your meeting or webinar requires registration. More info here:
+            // Meetings: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/meetings#join-meeting-with-registration-required
+            // Webinars: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/webinars#join-webinar-with-registration-required
+            var registrantToken = ''
+
+            function getSignature() {
+                fetch(signatureEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        meetingNumber: meetingNumber,
+                        role: role
+                    })
+                }).then((response) => {
+                    return response.json()
+                }).then((data) => {
+                    console.log(data)
+                    startMeeting(data.signature)
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
+
+            function startMeeting(signature) {
+
+                document.getElementById('zmmtg-root').style.display = 'block'
+
+                ZoomMtg.init({
+                    leaveUrl: leaveUrl,
+                    success: (success) => {
+                        console.log(success)
+                        ZoomMtg.join({
+                            signature: signature,
+                            sdkKey: sdkKey,
+                            meetingNumber: meetingNumber,
+                            userName: userName,
+                            userEmail: userEmail,
+                            passWord: passWord,
+                            tk: registrantToken,
+                            success: (success) => {
+                                console.log(success)
+                            },
+                            error: (error) => {
+                                console.log(error)
+                            },
+                        })
+                    },
+                    error: (error) => {
+                        console.log(error)
+                    }
+                })
+            }
+            
+        </script>
+        <%- include('../layout/footer') %>

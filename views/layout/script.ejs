@@ -1,0 +1,105 @@
+<script type="text/javascript">
+    const menu = $(".menu")
+    const toggle_menu = $(".toggle-menu")
+
+    $(document).ready(function () {
+        $(document).click(function (e) {
+            var sidebar = $(".menu, .toggle-menu")
+
+            if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0) {
+                sidebar.removeClass('show')
+            }
+
+        })
+
+        toggle_menu.click(() => {
+            menu.addClass("show")
+        })
+    });
+
+    addCssRule = function (/* string */ selector, /* string */ rule) {
+        if (document.styleSheets) {
+            if (!document.styleSheets.length) {
+                var head = document.getElementsByTagName('head')[0];
+                head.appendChild(bc.createEl('style'));
+            }
+
+            var i = document.styleSheets.length - 1;
+            var ss = document.styleSheets[i];
+
+            var l = 0;
+            if (ss.cssRules) {
+                l = ss.cssRules.length;
+            } else if (ss.rules) {
+                // IE
+                l = ss.rules.length;
+            }
+
+            if (ss.insertRule) {
+                ss.insertRule(selector + ' {' + rule + '}', l);
+            } else if (ss.addRule) {
+                // IE
+                ss.addRule(selector, rule, l);
+            }
+        }
+    };
+
+    // function load_zoom_List() {
+    //     const zoomlist = $('[name="zoom_list"]:checked, [name="zoom_list"]:checked');
+    //     if (zoomlist) {
+    //         if(zoomlist.length > 0){
+    //             $('#chon_cuoc_hop').attr('style', 'display:flex!important');
+    //             $('[dem="zoom"').text(zoomlist.length);
+    //         }else{
+    //             $('#chon_cuoc_hop').attr('style', 'display:none!important');
+    //             $('[dem="zoom"').text('0');
+    //         }
+    //     }
+    // }
+
+    addCssRule('html', 'position: relative;min-height: 100%')
+    addCssRule('body', 'background-color:#f7f7f7;--color-main: #00b762')
+    addCssRule('.text-main', 'color:var(--color-main)!important')
+    addCssRule('html.dark .navbar', 'background-color: #161616!important')
+    addCssRule('html.dark .toggle-menu', 'fill: #fff!important')
+    addCssRule('html.dark .form-control', 'box-shadow: none !important;border: 1px solid #202020 !important;background-color: #202020;color:#6c756e')
+    addCssRule('html.dark body', 'color: #fff;background-color:rgb(32 32 32)!important')
+    addCssRule('html.dark .card', '--bs-card-bg: #161616')
+    addCssRule('html.dark .card .card-text', 'color:rgb(170 170 170)!important')
+    addCssRule('html.dark .navbar .menu > li > .nav-link:hover', 'color: var(--color-main)!important')
+    addCssRule('html.dark .navbar .menu > li > .nav-link.active', 'color: var(--color-main)!important')
+    addCssRule('html.dark .navbar .menu > li > .nav-link', 'color:rgb(170 170 170)!important')
+    addCssRule('.btn-main', 'padding: 10px 10px;display: flex;align-items: center;height: 30px;font-weight: 500')
+    addCssRule('.bg-main', 'background-color: var(--color-main) !important')
+    addCssRule('.fs-13px', 'font-size: 13px !important')
+    addCssRule('a', 'text-decoration: none')
+    addCssRule('.navbar', ' padding-top: 1rem;padding-bottom: 1rem;top: 0;z-index: 999;')
+    addCssRule('.navbar .menu>li+li', 'margin-left: 1rem')
+    addCssRule('.navbar .menu>li>.nav-link', ' color: #323232;font-size: 13px')
+    addCssRule('.navbar .menu>li>.nav-link.active', 'color: var(--color-main);font-weight: 500')
+    addCssRule('.navbar .menu>li>.nav-link:hover', 'color: var(--color-main)')
+    addCssRule('.content', 'padding-top: 63px;padding-bottom: 7rem')
+    addCssRule('.border-none', 'border: none')
+    addCssRule('.fs-15px', 'font-size:15px')
+    addCssRule('.fs-auto-main', 'font-size:13px')
+    addCssRule('.text-gray', 'color: var(--bs-gray-600)')
+    addCssRule('.space-nowrap', 'white-space: nowrap')
+    addCssRule('.checkbox_main', 'filter: hue-rotate(297deg)')
+    addCssRule('.carousel-indicators [data-bs-target]', ' width: 7px;height: 7px;border-radius: 50%;top: -7px;position: relative;margin-right: 2px;margin-left: 2px')
+    addCssRule('.slide_bo_carousel', 'background-color: #252525;padding: 0px 21px;border-radius: 7px;height: 16px')
+    addCssRule('.card-main', 'max-width: 17rem;border: none;box-shadow: 1px 1px 8px 0px #00000017')
+    addCssRule('.card-main2', 'border: none;box-shadow: 1px 1px 8px 0px #00000017')
+    addCssRule('.b-line-center', 'width: 35px;height: 3px;margin: 13px auto 30px')
+    addCssRule('.alert-main', '--bs-alert-color: #ffffff;--bs-alert-bg: var(--color-main);--bs-alert-border: var(--color-main);font-size: 13px;font-weight: 500')
+    addCssRule('.text-warning2', '--bs-text-opacity: 1;color: #ffff62')
+    addCssRule('.text-bg-danger', ' color: #fff !important;background-color: #ff6464 !important;font-size: 9.5px !important')
+    addCssRule('.images_card', 'height: 135px')
+    addCssRule('.form-control', 'box-shadow: none !important;border: 1px solid #ced4da !important')
+    addCssRule('.footer', 'position: absolute;padding-top: 1rem;background-color: rgb(22 22 22);width: 100%;padding-bottom: 1rem;bottom:0px')
+    addCssRule('.error-404-text', 'font-style: normal;line-height: 20px;padding: 0px;text-align: center;margin-bottom: 12px;font-size: 12px;color: grey')
+    addCssRule('.text-404', 'font-style: normal;font-weight: 600;font-size: 18px;line-height: 24px;margin: 0px 0px 8px;padding: 0px;text-align: center')
+    addCssRule('.logo_brand', 'font-size: 21px;color: var(--color-main);font-weight: 600')
+    addCssRule('@media only screen and (max-width: 792px)', '.p-sm-0{padding:0}.fs-auto-main{ font-size:10px}.navbar .menu {position: fixed;top: 0;flex-direction: column;background-color: white;width: 17rem;height: 100%;padding: 22px 0px !important;justify-content: start;text-align: start;box-shadow: 1px 1px 20px 0px #0000000d;left: -20rem;transition: left .3s}.navbar .menu.show {left: 0}.navbar .menu>li+li {margin-left: 0 !important;margin-top: 1rem}.nav-link {width: 100%;height: 2.5rem;display: flex;font-weight: 500;align-items: center;padding-left: 2rem}.nav-link.active {background-color: rgb(181 181 181 / 10%)}.toggle-menu {display: flex !important}.w-md-100 {width: 100% !important}html.dark .navbar .menu > li > .nav-link {color: rgb(81 81 81) !important}')
+    addCssRule('@media only screen and (max-width:511px)', '.images_card {height: 107px}')
+    addCssRule('@media only screen and (max-width:399px)', '.images_card {height: 90px}')
+</script>
